@@ -1,7 +1,9 @@
-import streamlit as st
-import modal
-import json
+
 import os
+import json
+import time
+# import modal
+import streamlit as st
 
 
 def add_space(num_spaces=1):
@@ -10,8 +12,8 @@ def add_space(num_spaces=1):
         
 
 def process_podcast_info(url):
-    f = modal.Function.lookup("corise-podcast-project", "process_podcast")
-    output = f.call(url, '/content/podcast/')
+    # f = modal.Function.lookup("corise-podcast-project", "process_podcast")
+    output = "" #f.call(url, '/content/podcast/')
     return output
 
 
@@ -57,64 +59,67 @@ def main():
 
         process_button = st.button("Process Podcast Feed")
         # st.markdown("**Note**: Podcast processing can take upto 5 mins, please be patient.")
-
+    
+    placeholder = st.empty()
+    
     if selected_podcast:
-
-        podcast_info = available_podcast_info[selected_podcast]
-        
-        # Newsletter content
-        col1, col2 = st.columns([2, 8])
-        
-        with col1:
-            st.image(podcast_info['podcast_details']['episode_image'], width=100)
+        with placeholder.container():
+            podcast_info = available_podcast_info[selected_podcast]
             
-        with col2:
-            st.write("**Episode Title:**", podcast_info['podcast_details']['episode_title'])
-            st.write("**Guest:**", podcast_info['podcast_guest']['guest_name'])
+            # Newsletter content
+            col1, col2 = st.columns([2, 8])
             
-        # Display the five key moments
-        st.subheader("Key Moments")
-        key_moments = podcast_info['podcast_highlights']
-        for moment in key_moments.split('\n'):
-            st.markdown(
-                f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
-             
-        # Display the podcast episode summary
-        st.subheader("Summary")
-        st.write(podcast_info['podcast_summary'])
-        
-        st.subheader("Guest Details")
-        st.write(podcast_info["podcast_guest"]['summary'])
-
+            with col1:
+                st.image(podcast_info['podcast_details']['episode_image'], width=100)
+                
+            with col2:
+                st.write("**Episode Title:**", podcast_info['podcast_details']['episode_title'])
+                st.write("**Guest:**", podcast_info['podcast_guest']['guest_name'])
+                
+            # Display the five key moments
+            st.subheader("Key Moments")
+            key_moments = podcast_info['podcast_highlights']
+            for moment in key_moments.split('\n'):
+                st.markdown(
+                    f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
+                
+            # Display the podcast episode summary
+            st.subheader("Summary")
+            st.write(podcast_info['podcast_summary'])
+            
+            st.subheader("Guest Details")
+            st.write(podcast_info["podcast_guest"]['summary'])
 
     if process_button:
+        with placeholder.container():
+            with st.spinner("Processing podcast episode..."):
+                podcast_info = process_podcast_info(url)
+                time.sleep(5)
 
-        # Call the function to process the URLs and retrieve podcast guest information
-        podcast_info = process_podcast_info(url)
-
-        # Newsletter content
-        col1, col2 = st.columns([2, 8])
-        
-        with col1:
-            st.image(podcast_info['podcast_details']['episode_image'], width=100)
+        with placeholder.container():
+            # Newsletter content
+            col1, col2 = st.columns([2, 8])
             
-        with col2:
-            st.write("**Episode Title:**", podcast_info['podcast_details']['episode_title'])
-            st.write("**Guest:**", podcast_info['podcast_guest']['guest_name'])
+            with col1:
+                st.image(podcast_info['podcast_details']['episode_image'], width=100)
+                
+            with col2:
+                st.write("**Episode Title:**", podcast_info['podcast_details']['episode_title'])
+                st.write("**Guest:**", podcast_info['podcast_guest']['guest_name'])
+                
+            # Display the five key moments
+            st.subheader("Key Moments")
+            key_moments = podcast_info['podcast_highlights']
+            for moment in key_moments.split('\n'):
+                st.markdown(
+                    f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
+                
+            # Display the podcast episode summary
+            st.subheader("Summary")
+            st.write(podcast_info['podcast_summary'])
             
-        # Display the five key moments
-        st.subheader("Key Moments")
-        key_moments = podcast_info['podcast_highlights']
-        for moment in key_moments.split('\n'):
-            st.markdown(
-                f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
-             
-        # Display the podcast episode summary
-        st.subheader("Summary")
-        st.write(podcast_info['podcast_summary'])
-        
-        st.subheader("Guest Details")
-        st.write(podcast_info["podcast_guest"]['summary'])
+            st.subheader("Guest Details")
+            st.write(podcast_info["podcast_guest"]['summary'])
 
 
 if __name__ == '__main__':
