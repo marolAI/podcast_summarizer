@@ -62,8 +62,8 @@ def main():
     
     placeholder = st.empty()
     
-    with placeholder.container():
-        if selected_podcast:
+    if selected_podcast:
+        with placeholder.container():
             podcast_info = available_podcast_info[selected_podcast]
             
             # Newsletter content
@@ -91,6 +91,7 @@ def main():
             st.write(podcast_info["podcast_guest"]['summary'])
 
     if process_button:
+        placeholder.empty()
         with placeholder.container():
             with st.spinner("Processing podcast episode..."):
                 podcast_info = process_podcast_info(url)
