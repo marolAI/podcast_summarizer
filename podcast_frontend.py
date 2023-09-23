@@ -62,8 +62,8 @@ def main():
     
     placeholder = st.empty()
     
-    if selected_podcast:
-        with placeholder.container():
+    with placeholder.container():
+        if selected_podcast:
             podcast_info = available_podcast_info[selected_podcast]
             
             # Newsletter content
