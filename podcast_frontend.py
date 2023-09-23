@@ -2,7 +2,7 @@
 import os
 import json
 import time
-# import modal
+import modal
 import streamlit as st
 
 
@@ -12,8 +12,8 @@ def add_space(num_spaces=1):
         
 
 def process_podcast_info(url):
-    # f = modal.Function.lookup("corise-podcast-project", "process_podcast")
-    output = "" #f.call(url, '/content/podcast/')
+    f = modal.Function.lookup("corise-podcast-project", "process_podcast")
+    output = f.call(url, '/content/podcast/')
     return output
 
 
