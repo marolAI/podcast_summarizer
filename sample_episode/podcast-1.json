@@ -1,0 +1,64 @@
+{
+    "episode_image": "./assets/podcast_summarizer.png",
+    "episode_title": "Celebrating International Women's Day 2023",
+    "guest_info": "Unidentified Speaker| None",
+    "summarization_result": {
+        "core_topic_context": "The podcast celebrates International Women's Day by honoring the accomplishments of women throughout history and recognizing their contributions to society. It reflects on the progress women have made in various fields, including science, technology, engineering, and mathematics, literature, art, music, politics, and social activism.",
+        "main_points_arguments": "Women have made significant contributions to various fields, including science, technology, engineering, and mathematics, with notable figures such as Ada Lovelace, Rosalyn Franklin, and Mae Jemison. They have also made significant contributions to literature, art, and music, with notable figures such as Maya Angelou, Virginia Woolf, and Frida Kahlo. Women have been trailblazers in politics and social activism, fighting for social justice and human rights, with notable figures such as Sojourner Truth, Harriet Tubman, and Angela Davis. Today, women continue to break barriers and shatter glass ceilings in every field, with notable achievements such as winning Nobel Prizes, Oscars, and Pulitzer Prizes, and holding leadership positions such as CEOs, politicians, scientists, and astronauts.",
+        "conclusions_takeaways": "While women have made significant progress, there is still a long way to go in the fight for gender equality. Women continue to face discrimination, harassment, and violence worldwide, and it is essential to continue fighting for their rights to access education, healthcare, and opportunities to reach their full potential. The podcast concludes by emphasizing the importance of standing together to support each other and fight for a world where every woman can live free from discrimination and oppression."
+    },
+    "highlight_result": {
+        "insights": [
+            {
+                "insight_text": "Women have been leaders in science, technology, engineering and mathematics, from Ada Lovelace, who is considered to be the world's first computer programmer, to Rosalyn Franklin, who played a crucial role in the discovery of the structure of DNA.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "Women have also made significant contributions to literature, art, and music, from Maya Angelotoni Morrison, and Virginia Wolf, to Frida Kahlo, Mary Cassat, and Georgia O'Keef, to Billy Holiday, a Reef of Franklin, and Beyonce.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "Women have also been trailblazers in politics and social activism, from the civil rights movement to the women's suffrage movement, women have been instrumental in advancing social justice and human rights.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "Women like sojournered truth, Harriet Tubman, and Angela Davis have fought tirelessly to end slavery, Jim Crow laws, and discrimination.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "Women like Gloria Steinem, Malala Yusavsai, and Emma Watson have been advocates for women's rights and gender equality around the world.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "We have more women in leadership positions than ever before. Women are CEOs, politicians, scientists, and astronauts.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "Women are breaking barriers and shattering glass ceilings in every field. We have seen women with no bell prizes, Oscars, and Pulitzer's.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "We have seen women make history by becoming the first female vice president of the United States. The first female prime minister of New Zealand, and the first female president of Taiwan.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "But we still have a long way to go. Women continue to face discrimination, harassment and violence and all corners of the world.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            },
+            {
+                "insight_text": "We must continue to fight for gender equality to ensure that every woman has access to education, health care, and the opportunity to reach her full potential.",
+                "speaker": "Host",
+                "timestamp": "00: 00"
+            }
+        ]
+    }
+}
