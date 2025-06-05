@@ -42,8 +42,16 @@ def display_sidebar():
         st.divider()
         add_space(10)
         
+        # Provide instructions or context
+        st.write("Enter the RSS feed URL of the podcast you want to summarize.\n Then press ⤶.")
+        
+        st.write("A sample URL is provided below to get you started.")
         # Input field for RSS feed
-        feed_url = st.text_input("Link to RSS Feed")
+        feed_url = st.text_input(
+            "Podcast RSS Feed URL:",
+            value="https://media.rss.com/thepodcastai/feed.xml",   
+            help="Paste the RSS feed URL here. The sample URL is pre-filled." 
+        )
         
         if feed_url:
             with st.spinner("Searching for podcasts..."):
@@ -51,7 +59,7 @@ def display_sidebar():
 
         # Podcast selection dropdown
         selected_podcast = st.selectbox(
-            "Available podcasts for this feed", 
+            "Available podcasts for this feed:", 
             options=st.session_state.podcasts.keys(), 
             index=None,
             placeholder="Select a Podcast to process"
