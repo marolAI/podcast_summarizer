@@ -135,6 +135,8 @@ def sanitize_filename(url, title, content_type):
 
 def download_file(url, file_path):
     """Download file with progress handling"""
+    directory = os.path.dirname(file_path)
+    os.makedirs(directory, exist_ok=True)
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
         with open(file_path, 'wb') as f:
