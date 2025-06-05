@@ -10,7 +10,8 @@ from backend.processing import PodcastSummarizer
 torch.classes.__path__ = [] # RuntimeError: Tried to instantiate class '__path__._path', but it does not exist!
 
 
-st.set_page_config(page_icon="🎧", layout="wide", page_title="Castbrief")
+st.set_page_config(page_icon="🎧", layout="wide", page_title="PodLite")
+st.header("🄿🎧🄳🅻🅸🆃🅴", divider="gray")
 
 # Initialize session state variables
 if "file_path" not in st.session_state:
@@ -30,7 +31,7 @@ custom_headers = {
 def display_sidebar():
     """Render the sidebar components"""
     with st.sidebar:
-        st.header("Castbrief")
+        st.header("🄿🎧🄳🅻🅸🆃🅴", divider="gray")
         st.markdown("""Podcast Summarizer condenses lengthy podcast episodes into concise summaries.""")
         st.markdown(
             """
@@ -42,15 +43,11 @@ def display_sidebar():
         st.divider()
         add_space(10)
         
-        # Provide instructions or context
-        st.write("Enter the RSS feed URL of the podcast you want to summarize.\n Then press ⤶.")
-        
-        st.write("A sample URL is provided below to get you started.")
         # Input field for RSS feed
         feed_url = st.text_input(
             "Podcast RSS Feed URL:",
             value="https://media.rss.com/thepodcastai/feed.xml",   
-            help="Paste the RSS feed URL here. The sample URL is pre-filled." 
+            help="Paste the RSS feed URL here. Then press ⤶. The sample URL is pre-filled." 
         )
         
         if feed_url:
@@ -62,7 +59,8 @@ def display_sidebar():
             "Available podcasts for this feed:", 
             options=st.session_state.podcasts.keys(), 
             index=None,
-            placeholder="Select a Podcast to process"
+            placeholder="Select a Podcast to process",
+            help="Select a Podcast to process."
         )
         
         # Download audio when podcast is selected

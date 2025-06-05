@@ -6,3 +6,4 @@ langchain-community==0.3.24
 langchain-core==0.3.63
 langchain-groq==0.3.2
 torch==2.7.0
+huggingface-hub==0.32.4
