@@ -1,6 +1,7 @@
-# Podcast Summarizer
+# PODLITE
 
-The Podcast Summarizer is an AI-driven application that streamlines podcast consumption by providing automated summaries of podcast episodes, identifying prominent guests, and highlighting key points. This project is submitted as partial fulfillment of the requirements for the [Building AI Products with OpenAI](https://uplimit.com/course/building-ai-products-with-openai) course on [Uplimit](https://uplimit.com/).
+
+🄿🎧🄳🅻🅸🆃🅴 is an AI-driven application that streamlines podcast consumption by providing automated summaries of podcast episodes, identifying prominent guests, and highlighting key points. This project is submitted as partial fulfillment of the requirements for the [Building AI Products with OpenAI](https://uplimit.com/course/building-ai-products-with-openai) course on [Uplimit](https://uplimit.com/).
 
 ## Features
 
