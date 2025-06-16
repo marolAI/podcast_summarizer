@@ -21,6 +21,11 @@ if "podcasts" not in st.session_state:
 if "summarizer" not in st.session_state:
     st.session_state.summarizer = PodcastSummarizer()
 
+if 'audio_downloaded' not in st.session_state:
+    st.session_state.audio_downloaded = False
+if 'selected_podcast' not in st.session_state:
+    st.session_state.selected_podcast = None
+
 custom_headers = {
                 "core_topic_context": "Core Topic",
                 "main_points_arguments": "Discussion Points",
@@ -62,16 +67,24 @@ def display_sidebar():
             placeholder="Select a Podcast to process",
             help="Select a Podcast to process."
         )
+
+        if selected_podcast != st.session_state.selected_podcast:
+           st.session_state.audio_downloaded = False
+           st.session_state.selected_podcast = selected_podcast
         
-        # Download audio when podcast is selected
-        if selected_podcast:
-            entry = st.session_state.podcasts[selected_podcast]
+        # Download only when new selection is made and not downloaded yet
+        if st.session_state.selected_podcast and not st.session_state.audio_downloaded:
+            entry = st.session_state.podcasts[st.session_state.selected_podcast]
             st.session_state.episode_image = entry.get("image", {}).get("href", "")
             st.session_state.episode_title = entry.get("title", "")
             with st.spinner("Downloading podcast audio..."):
                 download_podcast_audio(entry)
-    
-        return st.button("Process Podcast Episode")
+                st.session_state.audio_downloaded = True
+
+        # Only show process button if audio is downloaded
+        if st.session_state.audio_downloaded:
+            return st.button("Process Podcast Episode")
+        return False
     
 
 def parse_feed(feed_url: str):
@@ -155,15 +168,17 @@ if process_button and st.session_state.file_path:
     with placeholder.container():
         try:
             with st.spinner("Transcribing podcast episode..."):
-                st.session_state.transcript = st.session_state.summarizer.transcribe(st.session_state.file_path)
+                st.session_state.transcript_path = st.session_state.summarizer.transcribe(st.session_state.file_path)
             with st.spinner("Highlighting key moments..."):
-                st.session_state.highlight_result = st.session_state.summarizer.highlight(st.session_state.transcript)
+                st.session_state.highlight_result = st.session_state.summarizer.highlight(st.session_state.transcript_path)
             with st.spinner("Summarizing podcast episode..."):
-                st.session_state.summarization_result = st.session_state.summarizer.summarize(st.session_state.transcript)
+                st.session_state.summarization_result = st.session_state.summarizer.summarize(st.session_state.transcript_path)
             with st.spinner("Getting the guest info..."):
-                st.session_state.guest_info = st.session_state.summarizer.get_guest_info(st.session_state.transcript)
+                st.session_state.guest_info = st.session_state.summarizer.get_guest_info(st.session_state.transcript_path)
         finally:
             os.remove(st.session_state.file_path)
+            os.remove(st.session_state.transcript_path)
+            st.session_state.summarizer.cleanup()
 
     with placeholder.container():
         main_col1, main_col2 = st.columns([1, 1])
